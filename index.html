@@ -1,0 +1,727 @@
+<html>
+<head>
+    <title>Iron Temple Gym</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial;
+            background-color: white;
+        }
+        
+        /* header */
+        header {
+            background-color: black;
+            color: yellow;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            box-sizing: border-box;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        .logo {
+            height: 40px;
+            float: left;
+            margin-right: 10px;
+        }
+        
+        header h1 {
+            margin: 0;
+            padding-top: 10px;
+            font-size: 24px;
+            display: inline;
+            float: left;
+        }
+        
+        nav {
+            float: right;
+            margin-top: 15px;
+        }
+        
+        nav a {
+            color: yellow;
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        nav a:hover {
+            color: white;
+        }
+        
+        /* hero section */
+        .hero {
+            background-image: url('./bggym.jpg');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 200px 20px 100px 20px;
+            margin-top: 80px;
+        }
+        
+        .hero h2 {
+            font-size: 40px;
+            color: yellow;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .button {
+            background-color: yellow;
+            color: black;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        
+        .button:hover {
+            background-color: white;
+        }
+        
+        /* sections */
+        .section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .section h2 {
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+        
+        /* AI section */
+        .ai-section {
+            background-color: black;
+            color: white;
+        }
+        
+        .ai-section h2 {
+            color: yellow;
+        }
+        
+        .chat-box {
+            background-color: #222;
+            max-width: 600px;
+            margin: 30px auto;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .chat-header {
+            background-color: yellow;
+            color: black;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .chat-messages {
+            height: 300px;
+            overflow-y: scroll;
+            background-color: #333;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        
+        .bot-message {
+            background-color: #555;
+            text-align: left;
+        }
+        
+        .user-message {
+            background-color: yellow;
+            color: black;
+            text-align: right;
+        }
+        
+        .chat-input {
+            display: flex;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #555;
+            color: white;
+        }
+        
+        .chat-input button {
+            background-color: yellow;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        /* service cards */
+        .services {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .service {
+            width: 300px;
+            background-color: #f5f5f5;
+            padding: 30px;
+            margin: 15px;
+            border-radius: 10px;
+            border-top: 5px solid rgb(224, 224, 69);
+        }
+        
+        .service i {
+            font-size: 50px;
+            color: rgb(37, 37, 28);
+            margin-bottom: 20px;
+        }
+        
+        /* trainers */
+        .trainers {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .trainer {
+            width: 300px;
+            background-color: white;
+            margin: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px #ddd;
+        }
+        
+        .trainer img {
+            width: 100%;
+            height: 250px;
+        }
+        
+        .trainer-info {
+            padding: 20px;
+        }
+        
+        /* pricing */
+        .pricing {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .price-card {
+            width: 300px;
+            background-color: white;
+            padding: 30px;
+            margin: 15px;
+            border-radius: 10px;
+            border-top: 5px solid yellow;
+            box-shadow: 0 0 10px #ddd;
+        }
+        
+        .price-card h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .price {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .price-card ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+        
+        .price-card li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        /* testimonials */
+        .testimonials-section {
+            background-color: black;
+            color: white;
+        }
+        
+        .testimonials-section h2 {
+            color: yellow;
+        }
+        
+        .testimonials {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .testimonial {
+            width: 300px;
+            background-color: #222;
+            padding: 30px;
+            margin: 15px;
+            border-radius: 10px;
+        }
+        
+        /* contact form */
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #f5f5f5;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        /* footer */
+        footer {
+            background-color: black;
+            color: yellow;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .footer-columns {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column {
+            width: 300px;
+            text-align: left;
+            margin: 15px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 15px;
+        }
+        
+        .footer-column a {
+            color: yellow;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            background-color: yellow;
+            color: black;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <img src="./download.jpeg" alt="Logo" class="logo">
+            <h1>Iron Temple</h1>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#ai">AI Assistant</a>
+                <a href="#services">Services</a>
+                <a href="#trainers">Trainers</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div id="home" class="hero">
+        <h2>Transform Your Body, Elevate Your Life</h2>
+        <p>Join Iron Temple and experience world-class training and expert coaching</p>
+        <a href="#contact" class="button">Start Free Trial</a>
+        <a href="#ai" class="button">Try AI Assistant</a>
+    </div>
+
+    <!-- AI Assistant Section -->
+    <div id="ai" class="section ai-section">
+        <h2>AI Fitness Assistant</h2>
+        <p>Get personalized workout plans powered by AI</p>
+        
+        <div class="chat-box">
+            <div class="chat-header">
+                <i class="fas fa-robot"></i> Iron Temple AI Assistant
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    Hello! I'm your AI fitness assistant. I can help create workout plans and answer your fitness questions. What are your goals?
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Type your message...">
+                <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <div id="services" class="section">
+        <h2>Our Services</h2>
+        <div class="services">
+            <div class="service">
+                <i class="fas fa-dumbbell"></i>
+                <h3>Strength Training</h3>
+                <p>State-of-the-art equipment and progressive programming</p>
+            </div>
+            
+            <div class="service">
+                <i class="fas fa-users"></i>
+                <h3>Group Classes</h3>
+                <p>High-energy group sessions including HIIT, Yoga, and Spin</p>
+            </div>
+            
+            <div class="service">
+                <i class="fas fa-user-tie"></i>
+                <h3>Personal Training</h3>
+                <p>One-on-one sessions with expert trainers</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trainers Section -->
+    <div id="trainers" class="section">
+        <h2>Meet Our Trainers</h2>
+        <div class="trainers">
+            <div class="trainer">
+                <img src="./b8fb0c2b-e241-4f9f-9200-8225680b8f7a.png" alt="Lingesh">
+                <div class="trainer-info">
+                    <h3>Lingesh</h3>
+                    <p>Strength & Power Lifting Coach</p>
+                </div>
+            </div>
+            
+            <div class="trainer">
+                <img src="https://pbs.twimg.com/media/GTDq8zhXkAAi_QD.jpg:large" alt="Kaviya">
+                <div class="trainer-info">
+                    <h3>Kaviya Ravichandran</h3>
+                    <p>Yoga & Functional Training</p>
+                </div>
+            </div>
+            
+            <div class="trainer">
+                <img src="https://via.placeholder.com/300x250/ffcc00/000000?text=AR" alt="Arun">
+                <div class="trainer-info">
+                    <h3>Arun Kumar</h3>
+                    <p>Cardio & Conditioning Specialist</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pricing Section -->
+    <div id="pricing" class="section">
+        <h2>Membership Plans</h2>
+        <div class="pricing">
+            <div class="price-card">
+                <h3>Basic</h3>
+                <div class="price">₹1,499/month</div>
+                <ul>
+                    <li>Access to gym floor</li>
+                    <li>Locker room facilities</li>
+                    <li>2 group classes per week</li>
+                    <li>Basic fitness assessment</li>
+                </ul>
+                <a href="#contact" class="button">Select Plan</a>
+            </div>
+            
+            <div class="price-card">
+                <h3>Premium</h3>
+                <div class="price">₹2,999/month</div>
+                <ul>
+                    <li>Unlimited gym access</li>
+                    <li>Unlimited group classes</li>
+                    <li>1 personal training session</li>
+                    <li>Nutrition consultation</li>
+                </ul>
+                <a href="#contact" class="button">Select Plan</a>
+            </div>
+            
+            <div class="price-card">
+                <h3>Elite</h3>
+                <div class="price">₹4,999/month</div>
+                <ul>
+                    <li>All Premium benefits</li>
+                    <li>4 personal training sessions</li>
+                    <li>Customized workout plan</li>
+                    <li>Meal planning service</li>
+                </ul>
+                <a href="#contact" class="button">Select Plan</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div id="testimonials" class="section testimonials-section">
+        <h2>Success Stories</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p>I've been training at Iron Temple for 6 months and have lost 15kg. The trainers are amazing!</p>
+                <h4>- Rahul Kumar</h4>
+            </div>
+            
+            <div class="testimonial">
+                <p>The group classes are incredible! The energy is always high and I've made great friends.</p>
+                <h4>- Priya Sharma</h4>
+            </div>
+            
+            <div class="testimonial">
+                <p>As a busy professional, the personal training gave me maximum results in minimal time.</p>
+                <h4>- Anil Singh</h4>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact" class="section">
+        <h2>Join Iron Temple Today</h2>
+        <p>Start your fitness journey with our 7-day free trial</p>
+        
+        <div class="contact-form">
+            <form onsubmit="submitForm(); return false;">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Membership Plan</label>
+                    <select required>
+                        <option value="">Select a plan</option>
+                        <option>Basic - ₹1,499/month</option>
+                        <option>Premium - ₹2,999/month</option>
+                        <option>Elite - ₹4,999/month</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Fitness Goals</label>
+                    <textarea rows="4"></textarea>
+                </div>
+                
+                <button type="submit" class="button" style="width: 100%;">Start Free Trial</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3>Iron Temple</h3>
+                <p>Transform your body, elevate your life.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <a href="#home">Home</a>
+                <a href="#ai">AI Assistant</a>
+                <a href="#services">Services</a>
+                <a href="#trainers">Trainers</a>
+                <a href="#pricing">Pricing</a>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone"></i> +91 9611074891</p>
+                <p><i class="fas fa-envelope"></i> lingeshkumar400@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Bangalore, India</p>
+            </div>
+        </div>
+        
+        <p>&copy; 2025 Iron Temple Gym. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Groq API Configuration
+        var GROQ_API_KEY = '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';
+        var GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
+        
+        // Store conversation history
+        var conversationHistory = [
+            {
+                role: 'system',
+                content: 'You are a professional fitness trainer at Iron Temple Gym. Help users with workout plans, exercise advice, nutrition guidance, and fitness goals. Keep responses concise and practical. Always be encouraging and supportive.'
+            }
+        ];
+        
+        // Chat function
+        function sendMessage() {
+            var input = document.getElementById('userInput');
+            var message = input.value;
+            
+            if (message == '') {
+                return;
+            }
+            
+            var chatBox = document.getElementById('chatMessages');
+            
+            // Add user message
+            var userMsg = document.createElement('div');
+            userMsg.className = 'message user-message';
+            userMsg.textContent = message;
+            chatBox.appendChild(userMsg);
+            
+            input.value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+            
+            // Add user message to history
+            conversationHistory.push({
+                role: 'user',
+                content: message
+            });
+            
+            // Show typing indicator
+            var typingMsg = document.createElement('div');
+            typingMsg.className = 'message bot-message';
+            typingMsg.id = 'typing';
+            typingMsg.textContent = 'Typing...';
+            chatBox.appendChild(typingMsg);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            
+            // Call Groq API
+            fetch(GROQ_API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + GROQ_API_KEY
+                },
+                body: JSON.stringify({
+                    model: 'llama-3.3-70b-versatile',
+                    messages: conversationHistory,
+                    temperature: 0.7,
+                    max_tokens: 500
+                })
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                // Remove typing indicator
+                var typing = document.getElementById('typing');
+                if (typing) {
+                    typing.remove();
+                }
+                
+                // Get AI response
+                var aiResponse = data.choices[0].message.content;
+                
+                // Add AI message to history
+                conversationHistory.push({
+                    role: 'assistant',
+                    content: aiResponse
+                });
+                
+                // Display AI response
+                var botMsg = document.createElement('div');
+                botMsg.className = 'message bot-message';
+                botMsg.textContent = aiResponse;
+                chatBox.appendChild(botMsg);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            })
+            .catch(function(error) {
+                // Remove typing indicator
+                var typing = document.getElementById('typing');
+                if (typing) {
+                    typing.remove();
+                }
+                
+                // Show error message
+                var errorMsg = document.createElement('div');
+                errorMsg.className = 'message bot-message';
+                errorMsg.textContent = 'Sorry, I had trouble connecting. Please try again!';
+                chatBox.appendChild(errorMsg);
+                chatBox.scrollTop = chatBox.scrollHeight;
+                
+                console.log('Error:', error);
+            });
+        }
+        
+        // Form submission
+        function submitForm() {
+            alert('Thank you! We will contact you shortly.');
+        }
+        
+        // Enter key for chat
+        document.getElementById('userInput').addEventListener('keypress', function(e) {
+            if (e.key == 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
