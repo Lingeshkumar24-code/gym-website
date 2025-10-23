@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
     <title>Iron Temple Gym</title>
@@ -19,6 +20,7 @@
             width: 100%;
             top: 0;
             box-sizing: border-box;
+            z-index: 1000;
         }
         
         .header-content {
@@ -181,6 +183,11 @@
             cursor: pointer;
         }
         
+        .chat-input button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
         /* service cards */
         .services {
             display: flex;
@@ -318,6 +325,7 @@
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
+            box-sizing: border-box;
         }
         
         /* footer */
@@ -408,7 +416,7 @@
             </div>
             <div class="chat-input">
                 <input type="text" id="userInput" placeholder="Type your message...">
-                <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+                <button id="sendBtn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
     </div>
@@ -619,16 +627,20 @@
             }
         ];
         
-        // Chat function
+        // Chat function with better error handling
         function sendMessage() {
             var input = document.getElementById('userInput');
-            var message = input.value;
+            var sendBtn = document.getElementById('sendBtn');
+            var message = input.value.trim();
             
-            if (message == '') {
+            if (message === '') {
                 return;
             }
             
             var chatBox = document.getElementById('chatMessages');
+            
+            // Disable button while sending
+            sendBtn.disabled = true;
             
             // Add user message
             var userMsg = document.createElement('div');
@@ -649,7 +661,7 @@
             var typingMsg = document.createElement('div');
             typingMsg.className = 'message bot-message';
             typingMsg.id = 'typing';
-            typingMsg.textContent = 'Typing...';
+            typingMsg.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Typing...';
             chatBox.appendChild(typingMsg);
             chatBox.scrollTop = chatBox.scrollHeight;
             
@@ -668,6 +680,9 @@
                 })
             })
             .then(function(response) {
+                if (!response.ok) {
+                    throw new Error('API Error: ' + response.status);
+                }
                 return response.json();
             })
             .then(function(data) {
@@ -692,6 +707,9 @@
                 botMsg.textContent = aiResponse;
                 chatBox.appendChild(botMsg);
                 chatBox.scrollTop = chatBox.scrollHeight;
+                
+                // Re-enable button
+                sendBtn.disabled = false;
             })
             .catch(function(error) {
                 // Remove typing indicator
@@ -703,11 +721,14 @@
                 // Show error message
                 var errorMsg = document.createElement('div');
                 errorMsg.className = 'message bot-message';
-                errorMsg.textContent = 'Sorry, I had trouble connecting. Please try again!';
+                errorMsg.textContent = '⚠️ Sorry, I had trouble connecting. Please check your API key or try again later!';
                 chatBox.appendChild(errorMsg);
                 chatBox.scrollTop = chatBox.scrollHeight;
                 
-                console.log('Error:', error);
+                console.error('Error details:', error);
+                
+                // Re-enable button
+                sendBtn.disabled = false;
             });
         }
         
@@ -718,12 +739,11 @@
         
         // Enter key for chat
         document.getElementById('userInput').addEventListener('keypress', function(e) {
-            if (e.key == 'Enter') {
+            if (e.key === 'Enter') {
                 sendMessage();
             }
         });
     </script>
 </body>
 </html>
-
 
