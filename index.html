@@ -1,186 +1,318 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Iron Temple Gym</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iron Temple Gym - Transform Your Body, Elevate Your Life</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial;
-            background-color: white;
+        :root {
+            --primary: #000;
+            --secondary: #FFD700;
+            --accent: #FF4500;
+            --light: #f5f5f5;
+            --dark: #222;
+            --gray: #555;
         }
         
-        /* header */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: white;
+            overflow-x: hidden;
+        }
+        
+        /* Header */
         header {
-            background-color: black;
-            color: yellow;
-            padding: 20px;
+            background-color: var(--primary);
+            color: var(--secondary);
+            padding: 15px 20px;
             position: fixed;
             width: 100%;
             top: 0;
-            box-sizing: border-box;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
         
         .header-content {
             max-width: 1200px;
             margin: 0 auto;
-            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
         }
         
         .logo {
             height: 40px;
-            float: left;
             margin-right: 10px;
         }
         
         header h1 {
-            margin: 0;
-            padding-top: 10px;
             font-size: 24px;
-            display: inline;
-            float: left;
+            font-weight: 700;
         }
         
         nav {
-            float: right;
-            margin-top: 15px;
+            display: flex;
+            align-items: center;
         }
         
         nav a {
-            color: yellow;
+            color: var(--secondary);
             text-decoration: none;
-            margin-left: 15px;
-            font-weight: bold;
+            margin-left: 20px;
+            font-weight: 600;
             font-size: 14px;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s;
         }
         
         nav a:hover {
             color: white;
         }
         
-        /* hero section */
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--secondary);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
         .hero {
-            background-image: url('./bggym.jpg');
-            background-size: cover;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('./bggym.jpg') center/cover no-repeat;
             color: white;
             text-align: center;
-            padding: 200px 20px 100px 20px;
-            margin-top: 80px;
+            padding: 180px 20px 100px;
+            margin-top: 70px;
         }
         
         .hero h2 {
-            font-size: 40px;
-            color: yellow;
+            font-size: 3rem;
+            color: var(--secondary);
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         
         .hero p {
-            font-size: 18px;
+            font-size: 1.2rem;
             margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .button {
-            background-color: yellow;
-            color: black;
+            background-color: var(--secondary);
+            color: var(--primary);
             padding: 15px 30px;
             text-decoration: none;
             font-weight: bold;
             display: inline-block;
             margin: 10px;
             border-radius: 5px;
+            transition: all 0.3s;
+            border: 2px solid var(--secondary);
         }
         
         .button:hover {
-            background-color: white;
+            background-color: transparent;
+            color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
         
-        /* sections */
+        .button-accent {
+            background-color: var(--accent);
+            border-color: var(--accent);
+        }
+        
+        .button-accent:hover {
+            color: var(--accent);
+        }
+        
+        /* Sections */
         .section {
-            padding: 60px 20px;
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
             text-align: center;
+            margin-bottom: 50px;
         }
         
-        .section h2 {
-            font-size: 32px;
-            margin-bottom: 40px;
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
         }
         
-        /* AI section */
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* AI Section */
         .ai-section {
-            background-color: black;
+            background-color: var(--primary);
             color: white;
         }
         
-        .ai-section h2 {
-            color: yellow;
+        .ai-section .section-title h2 {
+            color: var(--secondary);
+        }
+        
+        .chat-container {
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .chat-box {
-            background-color: #222;
-            max-width: 600px;
-            margin: 30px auto;
+            background-color: var(--dark);
             border-radius: 10px;
-            padding: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
         
         .chat-header {
-            background-color: yellow;
-            color: black;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
             font-weight: bold;
+        }
+        
+        .chat-header i {
+            margin-right: 10px;
+            font-size: 1.2rem;
         }
         
         .chat-messages {
             height: 300px;
-            overflow-y: scroll;
+            overflow-y: auto;
+            padding: 20px;
             background-color: #333;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 15px;
         }
         
         .message {
             margin-bottom: 15px;
-            padding: 10px;
+            padding: 12px 15px;
             border-radius: 10px;
+            max-width: 80%;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .bot-message {
-            background-color: #555;
+            background-color: var(--gray);
             text-align: left;
+            border-bottom-left-radius: 2px;
         }
         
         .user-message {
-            background-color: yellow;
-            color: black;
+            background-color: var(--secondary);
+            color: var(--primary);
             text-align: right;
+            margin-left: auto;
+            border-bottom-right-radius: 2px;
+        }
+        
+        .bot-message ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .bot-message li {
+            margin-bottom: 8px;
+            line-height: 1.5;
         }
         
         .chat-input {
             display: flex;
+            padding: 15px;
+            background-color: var(--dark);
+            border-top: 1px solid #444;
         }
         
         .chat-input input {
             flex: 1;
-            padding: 10px;
+            padding: 12px 15px;
             border: none;
             border-radius: 5px;
-            background-color: #555;
+            background-color: #444;
             color: white;
+            font-size: 1rem;
+        }
+        
+        .chat-input input:focus {
+            outline: 2px solid var(--secondary);
         }
         
         .chat-input button {
-            background-color: yellow;
-            color: black;
+            background-color: var(--secondary);
+            color: var(--primary);
             border: none;
-            padding: 10px 20px;
+            padding: 12px 20px;
             margin-left: 10px;
             border-radius: 5px;
             cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .chat-input button:hover:not(:disabled) {
+            background-color: #ffed4a;
+            transform: scale(1.05);
         }
         
         .chat-input button:disabled {
@@ -188,123 +320,213 @@
             cursor: not-allowed;
         }
         
-        /* service cards */
+        /* Service Cards */
         .services {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
+            gap: 30px;
         }
         
         .service {
-            width: 300px;
-            background-color: #f5f5f5;
-            padding: 30px;
-            margin: 15px;
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            background-color: var(--light);
+            padding: 40px 30px;
             border-radius: 10px;
-            border-top: 5px solid rgb(224, 224, 69);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .service:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
         
         .service i {
             font-size: 50px;
-            color: rgb(37, 37, 28);
+            color: var(--primary);
             margin-bottom: 20px;
         }
         
-        /* trainers */
+        .service h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Trainers */
         .trainers {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
+            gap: 30px;
         }
         
         .trainer {
             width: 300px;
             background-color: white;
-            margin: 15px;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 0 10px #ddd;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
         }
         
-        .trainer img {
+        .trainer:hover {
+            transform: translateY(-10px);
+        }
+        
+        .trainer-img {
             width: 100%;
             height: 250px;
+            overflow: hidden;
+        }
+        
+        .trainer-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .trainer:hover .trainer-img img {
+            transform: scale(1.1);
         }
         
         .trainer-info {
             padding: 20px;
+            text-align: center;
         }
         
-        /* pricing */
+        .trainer-info h3 {
+            margin-bottom: 5px;
+        }
+        
+        .trainer-info p {
+            color: var(--gray);
+        }
+        
+        /* Pricing */
         .pricing {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
+            gap: 30px;
         }
         
         .price-card {
-            width: 300px;
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
             background-color: white;
-            padding: 30px;
-            margin: 15px;
+            padding: 40px 30px;
             border-radius: 10px;
-            border-top: 5px solid yellow;
-            box-shadow: 0 0 10px #ddd;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .price-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .price-card.featured {
+            border: 2px solid var(--secondary);
+            transform: scale(1.05);
+        }
+        
+        .price-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
         }
         
         .price-card h3 {
-            font-size: 24px;
+            font-size: 1.5rem;
             margin-bottom: 20px;
         }
         
         .price {
-            font-size: 36px;
+            font-size: 2.5rem;
             font-weight: bold;
             margin: 20px 0;
+            color: var(--primary);
         }
         
         .price-card ul {
             list-style: none;
-            padding: 0;
             text-align: left;
+            margin-bottom: 30px;
         }
         
         .price-card li {
             padding: 10px 0;
             border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
         }
         
-        /* testimonials */
+        .price-card li i {
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+        
+        /* Testimonials */
         .testimonials-section {
-            background-color: black;
+            background-color: var(--primary);
             color: white;
         }
         
-        .testimonials-section h2 {
-            color: yellow;
+        .testimonials-section .section-title h2 {
+            color: var(--secondary);
         }
         
         .testimonials {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
+            gap: 30px;
         }
         
         .testimonial {
-            width: 300px;
-            background-color: #222;
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            background-color: var(--dark);
             padding: 30px;
-            margin: 15px;
             border-radius: 10px;
+            position: relative;
         }
         
-        /* contact form */
+        .testimonial:before {
+            content: '"';
+            font-size: 5rem;
+            color: var(--secondary);
+            opacity: 0.3;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial p {
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .testimonial h4 {
+            color: var(--secondary);
+        }
+        
+        /* Contact Form */
         .contact-form {
-            max-width: 500px;
+            max-width: 600px;
             margin: 0 auto;
-            background-color: #f5f5f5;
-            padding: 30px;
+            background-color: var(--light);
+            padding: 40px;
             border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
         .form-group {
@@ -314,63 +536,234 @@
         
         .form-group label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
         
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 10px;
+            padding: 12px 15px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            box-sizing: border-box;
+            font-size: 1rem;
+            transition: border 0.3s;
         }
         
-        /* footer */
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+        
+        /* Footer */
         footer {
-            background-color: black;
-            color: yellow;
-            padding: 40px 20px;
-            text-align: center;
+            background-color: var(--primary);
+            color: var(--secondary);
+            padding: 60px 20px 30px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
         .footer-columns {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             flex-wrap: wrap;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
         
         .footer-column {
-            width: 300px;
-            text-align: left;
-            margin: 15px;
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
         }
         
         .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column p {
             margin-bottom: 15px;
+            color: #ccc;
         }
         
         .footer-column a {
-            color: yellow;
+            color: #ccc;
             text-decoration: none;
             display: block;
             margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
         }
         
         .social-links a {
-            display: inline-block;
-            background-color: yellow;
-            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 40px;
             height: 40px;
-            line-height: 40px;
-            text-align: center;
+            background-color: var(--secondary);
+            color: var(--primary);
             border-radius: 50%;
-            margin-right: 10px;
-            margin-top: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: white;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: #ffed4a;
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 60px 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s;
+                z-index: 999;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            nav a {
+                margin: 10px 0;
+                font-size: 1.1rem;
+            }
+            
+            .hero {
+                padding: 150px 20px 80px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .price-card.featured {
+                transform: scale(1);
+            }
+            
+            .price-card.featured:hover {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .button {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+                max-width: 250px;
+            }
+            
+            .service, .trainer, .price-card {
+                min-width: 100%;
+            }
+            
+            .contact-form {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
@@ -378,9 +771,14 @@
     <!-- Header -->
     <header>
         <div class="header-content">
-            <img src="./download.jpeg" alt="Logo" class="logo">
-            <h1>Iron Temple</h1>
-            <nav>
+            <div class="logo-container">
+                <img src="./download.jpeg" alt="Iron Temple Logo" class="logo">
+                <h1>Iron Temple</h1>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="mainNav">
                 <a href="#home">Home</a>
                 <a href="#ai">AI Assistant</a>
                 <a href="#services">Services</a>
@@ -393,176 +791,208 @@
     </header>
 
     <!-- Hero Section -->
-    <div id="home" class="hero">
+    <section id="home" class="hero">
         <h2>Transform Your Body, Elevate Your Life</h2>
-        <p>Join Iron Temple and experience world-class training and expert coaching</p>
+        <p>Join Iron Temple and experience world-class training with expert coaching in a supportive community</p>
         <a href="#contact" class="button">Start Free Trial</a>
-        <a href="#ai" class="button">Try AI Assistant</a>
-    </div>
+        <a href="#ai" class="button button-accent">Try AI Assistant</a>
+    </section>
 
     <!-- AI Assistant Section -->
-    <div id="ai" class="section ai-section">
-        <h2>AI Fitness Assistant</h2>
-        <p>Get personalized workout plans powered by AI</p>
+    <section id="ai" class="section ai-section">
+        <div class="section-title">
+            <h2>AI Fitness Assistant</h2>
+            <p>Get personalized workout plans and fitness guidance powered by AI</p>
+        </div>
         
-        <div class="chat-box">
-            <div class="chat-header">
-                <i class="fas fa-robot"></i> Iron Temple AI Assistant
-            </div>
-            <div class="chat-messages" id="chatMessages">
-                <div class="message bot-message">
-                    Hello! I'm your AI fitness assistant. I can help create workout plans and answer your fitness questions. What are your goals?
+        <div class="chat-container">
+            <div class="chat-box">
+                <div class="chat-header">
+                    <i class="fas fa-robot"></i> Iron Temple AI Assistant
+                </div>
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot-message">
+                        <p>Hello! I'm your AI fitness assistant at Iron Temple. I can help create personalized workout plans, answer your fitness questions, and provide nutrition guidance.</p>
+                        <p><strong>What are your fitness goals?</strong></p>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="userInput" placeholder="Ask about workouts, nutrition, or fitness goals...">
+                    <button id="sendBtn" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i> Send
+                    </button>
                 </div>
             </div>
-            <div class="chat-input">
-                <input type="text" id="userInput" placeholder="Type your message...">
-                <button id="sendBtn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
-            </div>
         </div>
-    </div>
+    </section>
 
     <!-- Services Section -->
-    <div id="services" class="section">
-        <h2>Our Services</h2>
+    <section id="services" class="section">
+        <div class="section-title">
+            <h2>Our Services</h2>
+            <p>Comprehensive fitness solutions tailored to your needs</p>
+        </div>
         <div class="services">
             <div class="service">
                 <i class="fas fa-dumbbell"></i>
                 <h3>Strength Training</h3>
-                <p>State-of-the-art equipment and progressive programming</p>
+                <p>State-of-the-art equipment with progressive programming to build muscle and strength effectively.</p>
             </div>
             
             <div class="service">
                 <i class="fas fa-users"></i>
                 <h3>Group Classes</h3>
-                <p>High-energy group sessions including HIIT, Yoga, and Spin</p>
+                <p>High-energy group sessions including HIIT, Yoga, Spin, and functional training for all fitness levels.</p>
             </div>
             
             <div class="service">
                 <i class="fas fa-user-tie"></i>
                 <h3>Personal Training</h3>
-                <p>One-on-one sessions with expert trainers</p>
+                <p>One-on-one sessions with certified expert trainers for maximum results and personalized attention.</p>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Trainers Section -->
-    <div id="trainers" class="section">
-        <h2>Meet Our Trainers</h2>
+    <section id="trainers" class="section">
+        <div class="section-title">
+            <h2>Meet Our Trainers</h2>
+            <p>Our certified professionals are dedicated to helping you achieve your fitness goals</p>
+        </div>
         <div class="trainers">
             <div class="trainer">
-                <img src="./b8fb0c2b-e241-4f9f-9200-8225680b8f7a.png" alt="Lingesh">
+                <div class="trainer-img">
+                    <img src="./b8fb0c2b-e241-4f9f-9200-8225680b8f7a.png" alt="Lingesh">
+                </div>
                 <div class="trainer-info">
                     <h3>Lingesh</h3>
                     <p>Strength & Power Lifting Coach</p>
+                    <p>5+ years experience</p>
                 </div>
             </div>
             
             <div class="trainer">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq5CnuZhSS4GSL46pcPT95Qpt-GcdsmJwiyg&s" alt="Kaviya">
+                <div class="trainer-img">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq5CnuZhSS4GSL46pcPT95Qpt-GcdsmJwiyg&s" alt="Kaviya">
+                </div>
                 <div class="trainer-info">
                     <h3>Kaviya Ravichandran</h3>
                     <p>Yoga & Functional Training</p>
+                    <p>Certified Yoga Instructor</p>
                 </div>
             </div>
             
             <div class="trainer">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdThvRY-kqcrQ_qdvMKnS6xCK2EE-vuQjYIw&s" alt="Arun">
+                <div class="trainer-img">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdThvRY-kqcrQ_qdvMKnS6xCK2EE-vuQjYIw&s" alt="Arun">
+                </div>
                 <div class="trainer-info">
                     <h3>Arun Kumar</h3>
                     <p>Cardio & Conditioning Specialist</p>
+                    <p>Sports Science Graduate</p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Pricing Section -->
-    <div id="pricing" class="section">
-        <h2>Membership Plans</h2>
+    <section id="pricing" class="section">
+        <div class="section-title">
+            <h2>Membership Plans</h2>
+            <p>Flexible options to suit your fitness journey and budget</p>
+        </div>
         <div class="pricing">
             <div class="price-card">
                 <h3>Basic</h3>
-                <div class="price">₹1,499/month</div>
+                <div class="price">₹1,499<span>/month</span></div>
                 <ul>
-                    <li>Access to gym floor</li>
-                    <li>Locker room facilities</li>
-                    <li>2 group classes per week</li>
-                    <li>Basic fitness assessment</li>
+                    <li><i class="fas fa-check"></i> Access to gym floor</li>
+                    <li><i class="fas fa-check"></i> Locker room facilities</li>
+                    <li><i class="fas fa-check"></i> 2 group classes per week</li>
+                    <li><i class="fas fa-check"></i> Basic fitness assessment</li>
                 </ul>
                 <a href="#contact" class="button">Select Plan</a>
             </div>
             
-            <div class="price-card">
+            <div class="price-card featured">
                 <h3>Premium</h3>
-                <div class="price">₹2,999/month</div>
+                <div class="price">₹2,999<span>/month</span></div>
                 <ul>
-                    <li>Unlimited gym access</li>
-                    <li>Unlimited group classes</li>
-                    <li>1 personal training session</li>
-                    <li>Nutrition consultation</li>
+                    <li><i class="fas fa-check"></i> Unlimited gym access</li>
+                    <li><i class="fas fa-check"></i> Unlimited group classes</li>
+                    <li><i class="fas fa-check"></i> 1 personal training session</li>
+                    <li><i class="fas fa-check"></i> Nutrition consultation</li>
+                    <li><i class="fas fa-check"></i> Progress tracking</li>
                 </ul>
                 <a href="#contact" class="button">Select Plan</a>
             </div>
             
             <div class="price-card">
                 <h3>Elite</h3>
-                <div class="price">₹4,999/month</div>
+                <div class="price">₹4,999<span>/month</span></div>
                 <ul>
-                    <li>All Premium benefits</li>
-                    <li>4 personal training sessions</li>
-                    <li>Customized workout plan</li>
-                    <li>Meal planning service</li>
+                    <li><i class="fas fa-check"></i> All Premium benefits</li>
+                    <li><i class="fas fa-check"></i> 4 personal training sessions</li>
+                    <li><i class="fas fa-check"></i> Customized workout plan</li>
+                    <li><i class="fas fa-check"></i> Meal planning service</li>
+                    <li><i class="fas fa-check"></i> Priority booking</li>
                 </ul>
                 <a href="#contact" class="button">Select Plan</a>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Testimonials Section -->
-    <div id="testimonials" class="section testimonials-section">
-        <h2>Success Stories</h2>
+    <section id="testimonials" class="section testimonials-section">
+        <div class="section-title">
+            <h2>Success Stories</h2>
+            <p>Hear from our members who transformed their lives at Iron Temple</p>
+        </div>
         <div class="testimonials">
             <div class="testimonial">
-                <p>I've been training at Iron Temple for 6 months and have lost 15kg. The trainers are amazing!</p>
+                <p>I've been training at Iron Temple for 6 months and have lost 15kg. The trainers are amazing and the community keeps me motivated!</p>
                 <h4>- Rahul Kumar</h4>
             </div>
             
             <div class="testimonial">
-                <p>The group classes are incredible! The energy is always high and I've made great friends.</p>
+                <p>The group classes are incredible! The energy is always high and I've made great friends while getting in the best shape of my life.</p>
                 <h4>- Priya Sharma</h4>
             </div>
             
             <div class="testimonial">
-                <p>As a busy professional, the personal training gave me maximum results in minimal time.</p>
+                <p>As a busy professional, the personal training sessions gave me maximum results in minimal time. Worth every rupee!</p>
                 <h4>- Anil Singh</h4>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Contact Section -->
-    <div id="contact" class="section">
-        <h2>Join Iron Temple Today</h2>
-        <p>Start your fitness journey with our 7-day free trial</p>
+    <section id="contact" class="section">
+        <div class="section-title">
+            <h2>Join Iron Temple Today</h2>
+            <p>Start your fitness journey with our 7-day free trial</p>
+        </div>
         
         <div class="contact-form">
-            <form onsubmit="submitForm(); return false;">
+            <form id="contactForm" onsubmit="submitForm(event)">
                 <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" required>
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required>
                 </div>
                 
                 <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" required>
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required>
                 </div>
                 
                 <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="tel" required>
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required>
                 </div>
                 
                 <div class="form-group">
-                    <label>Membership Plan</label>
-                    <select required>
+                    <label for="plan">Membership Plan</label>
+                    <select id="plan" required>
                         <option value="">Select a plan</option>
                         <option>Basic - ₹1,499/month</option>
                         <option>Premium - ₹2,999/month</option>
@@ -571,79 +1001,159 @@
                 </div>
                 
                 <div class="form-group">
-                    <label>Fitness Goals</label>
-                    <textarea rows="4"></textarea>
+                    <label for="goals">Fitness Goals</label>
+                    <textarea id="goals" rows="4" placeholder="Tell us about your fitness goals..."></textarea>
                 </div>
                 
                 <button type="submit" class="button" style="width: 100%;">Start Free Trial</button>
             </form>
         </div>
-    </div>
+    </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-columns">
-            <div class="footer-column">
-                <h3>Iron Temple</h3>
-                <p>Transform your body, elevate your life.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+        <div class="footer-content">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>Iron Temple</h3>
+                    <p>Transform your body, elevate your life with our world-class fitness facilities and expert coaching.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#ai">AI Assistant</a>
+                    <a href="#services">Services</a>
+                    <a href="#trainers">Trainers</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#testimonials">Testimonials</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> +91 9611074891</p>
+                    <p><i class="fas fa-envelope"></i> lingeshkumar400@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Bangalore, India</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sun: 5:00 AM - 11:00 PM</p>
                 </div>
             </div>
             
-            <div class="footer-column">
-                <h3>Quick Links</h3>
-                <a href="#home">Home</a>
-                <a href="#ai">AI Assistant</a>
-                <a href="#services">Services</a>
-                <a href="#trainers">Trainers</a>
-                <a href="#pricing">Pricing</a>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Contact Info</h3>
-                <p><i class="fas fa-phone"></i> +91 9611074891</p>
-                <p><i class="fas fa-envelope"></i> lingeshkumar400@gmail.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> Bangalore, India</p>
+            <div class="copyright">
+                <p>&copy; 2025 Iron Temple Gym. All rights reserved.</p>
             </div>
         </div>
-        
-        <p>&copy; 2025 Iron Temple Gym. All rights reserved.</p>
     </footer>
 
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
     <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mainNav.classList.remove('active');
+            });
+        });
+        
+        // Back to top button
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
         // Groq API Configuration
-        var GROQ_API_KEY = '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';
-        var GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
+        // IMPORTANT: In a production environment, never expose API keys in client-side code
+        // This should be handled through a server-side proxy
+        const GROQ_API_KEY = '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';
+        const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
         
         // Store conversation history
-        var conversationHistory = [
+        let conversationHistory = [
             {
                 role: 'system',
-                content: 'You are a professional fitness trainer at Iron Temple Gym. Help users with workout plans, exercise advice, nutrition guidance, and fitness goals. Keep responses concise and practical. Always be encouraging and supportive.'
+                content: `You are a professional fitness trainer at Iron Temple Gym. Help users with workout plans, exercise advice, nutrition guidance, and fitness goals. 
+
+IMPORTANT FORMATTING INSTRUCTIONS:
+- ALWAYS respond with clear, organized points using bullet points or numbered lists
+- Use headings to separate different sections of your response
+- Keep responses concise and practical
+- Always be encouraging and supportive
+- If asked about something unrelated to fitness, politely redirect to fitness topics
+
+EXAMPLE RESPONSE FORMAT:
+Great question! Here's a plan to help you achieve your goal:
+
+**Key Steps:**
+• Step 1: Description of step one
+• Step 2: Description of step two
+• Step 3: Description of step three
+
+**Additional Tips:**
+• Tip 1: Helpful advice
+• Tip 2: More helpful advice
+
+Let me know if you need more details on any of these points!`
             }
         ];
         
         // Chat function with better error handling
         function sendMessage() {
-            var input = document.getElementById('userInput');
-            var sendBtn = document.getElementById('sendBtn');
-            var message = input.value.trim();
+            const input = document.getElementById('userInput');
+            const sendBtn = document.getElementById('sendBtn');
+            const message = input.value.trim();
             
             if (message === '') {
                 return;
             }
             
-            var chatBox = document.getElementById('chatMessages');
+            const chatBox = document.getElementById('chatMessages');
             
             // Disable button while sending
             sendBtn.disabled = true;
+            sendBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending';
             
             // Add user message
-            var userMsg = document.createElement('div');
+            const userMsg = document.createElement('div');
             userMsg.className = 'message user-message';
             userMsg.textContent = message;
             chatBox.appendChild(userMsg);
@@ -658,10 +1168,10 @@
             });
             
             // Show typing indicator
-            var typingMsg = document.createElement('div');
+            const typingMsg = document.createElement('div');
             typingMsg.className = 'message bot-message';
             typingMsg.id = 'typing';
-            typingMsg.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Typing...';
+            typingMsg.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Thinking...';
             chatBox.appendChild(typingMsg);
             chatBox.scrollTop = chatBox.scrollHeight;
             
@@ -679,21 +1189,21 @@
                     max_tokens: 500
                 })
             })
-            .then(function(response) {
+            .then(response => {
                 if (!response.ok) {
-                    throw new Error('API Error: ' + response.status);
+                    throw new Error(`API Error: ${response.status} ${response.statusText}`);
                 }
                 return response.json();
             })
-            .then(function(data) {
+            .then(data => {
                 // Remove typing indicator
-                var typing = document.getElementById('typing');
+                const typing = document.getElementById('typing');
                 if (typing) {
                     typing.remove();
                 }
                 
                 // Get AI response
-                var aiResponse = data.choices[0].message.content;
+                const aiResponse = data.choices[0].message.content;
                 
                 // Add AI message to history
                 conversationHistory.push({
@@ -702,26 +1212,48 @@
                 });
                 
                 // Display AI response
-                var botMsg = document.createElement('div');
+                const botMsg = document.createElement('div');
                 botMsg.className = 'message bot-message';
-                botMsg.textContent = aiResponse;
+                
+                // Format the response to ensure it's readable
+                let formattedResponse = aiResponse;
+                
+                // Convert numbered lists to proper HTML
+                formattedResponse = formattedResponse.replace(/\n(\d+)\.\s/g, '\n<li>$1. ');
+                formattedResponse = formattedResponse.replace(/\n•\s/g, '\n<li>• ');
+                formattedResponse = formattedResponse.replace(/\n-\s/g, '\n<li>- ');
+                
+                // If we found list items, wrap them in a UL
+                if (formattedResponse.includes('<li>')) {
+                    formattedResponse = formattedResponse.replace(/(<li>.*)/s, '<ul>$1</ul>');
+                }
+                
+                // Convert line breaks to paragraphs where appropriate
+                formattedResponse = formattedResponse.split('\n\n').map(paragraph => {
+                    if (paragraph.trim() === '') return '';
+                    if (paragraph.includes('<ul>')) return paragraph;
+                    return `<p>${paragraph}</p>`;
+                }).join('');
+                
+                botMsg.innerHTML = formattedResponse;
                 chatBox.appendChild(botMsg);
                 chatBox.scrollTop = chatBox.scrollHeight;
                 
                 // Re-enable button
                 sendBtn.disabled = false;
+                sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send';
             })
-            .catch(function(error) {
+            .catch(error => {
                 // Remove typing indicator
-                var typing = document.getElementById('typing');
+                const typing = document.getElementById('typing');
                 if (typing) {
                     typing.remove();
                 }
                 
                 // Show error message
-                var errorMsg = document.createElement('div');
+                const errorMsg = document.createElement('div');
                 errorMsg.className = 'message bot-message';
-                errorMsg.textContent = '⚠️ Sorry, I had trouble connecting. Please check your API key or try again later!';
+                errorMsg.textContent = '⚠️ Sorry, I\'m having trouble connecting right now. Please try again in a moment!';
                 chatBox.appendChild(errorMsg);
                 chatBox.scrollTop = chatBox.scrollHeight;
                 
@@ -729,12 +1261,30 @@
                 
                 // Re-enable button
                 sendBtn.disabled = false;
+                sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send';
             });
         }
         
         // Form submission
-        function submitForm() {
-            alert('Thank you! We will contact you shortly.');
+        function submitForm(event) {
+            event.preventDefault();
+            
+            // Simple form validation
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const plan = document.getElementById('plan').value;
+            
+            if (!name || !email || !phone || !plan) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // In a real application, you would send this data to a server
+            alert(`Thank you, ${name}! We've received your information and will contact you shortly to schedule your free trial.`);
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
         }
         
         // Enter key for chat
@@ -746,4 +1296,5 @@
     </script>
 </body>
 </html>
+
 
