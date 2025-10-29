@@ -107,19 +107,54 @@
             cursor: pointer;
         }
         
-        /* Hero Section */
+        /* Hero Section with Video Background */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('./bggym.jpg') center/cover no-repeat;
-            color: white;
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 180px 20px 100px;
+            color: white;
+            overflow: hidden;
             margin-top: 70px;
+        }
+        
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .video-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            z-index: 1;
         }
         
         .hero h2 {
             font-size: 3rem;
             color: var(--secondary);
-            margin-bottom: 20px;
+            margin-bottom: 450px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         
@@ -725,7 +760,7 @@
             }
             
             .hero {
-                padding: 150px 20px 80px;
+                height: 80vh;
             }
             
             .hero h2 {
@@ -772,7 +807,7 @@
     <header>
         <div class="header-content">
             <div class="logo-container">
-                <img src="./download.jpeg" alt="Iron Temple Logo" class="logo">
+                <img src="./gymlogo.jpeg" alt="Iron Temple Logo" class="logo">
                 <h1>Iron Temple</h1>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -790,12 +825,23 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Video Background -->
     <section id="home" class="hero">
-        <h2>Transform Your Body, Elevate Your Life</h2>
-        <p>Join Iron Temple and experience world-class training with expert coaching in a supportive community</p>
-        <a href="#contact" class="button">Start Free Trial</a>
-        <a href="#ai" class="button button-accent">Try AI Assistant</a>
+        <div class="video-background">
+            <video autoplay muted loop playsinline>
+                <!-- Replace with your actual video file -->
+                <source src="./WhatsApp Video 2025-10-29 at 6.40.11 PM.mp4" type="video/mp4">
+                <!-- Fallback image if video doesn't load -->
+                <img src="./bggym.jpg" alt="Gym background" style="width: 100%; height: 100%; object-fit: cover;">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h2>Transform Your Body, Elevate Your Life</h2>
+            
+            <a href="#contact" class="button">Start Free Trial</a>
+            <a href="#ai" class="button button-accent">Try AI Assistant</a>
+        </div>
     </section>
 
     <!-- AI Assistant Section -->
